@@ -145,8 +145,6 @@ class PlaceholderEditing extends Plugin {
         class: 'placeholder',
       })
 
-      console.log('.....data1')
-
       // Insert the placeholder name (as a text).
       const innerText = viewWriter.createText('{{' + name + '}}')
       viewWriter.insert(viewWriter.createPositionAt(placeholderView, 0), innerText)
