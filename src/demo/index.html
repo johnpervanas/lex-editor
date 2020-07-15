@@ -3,14 +3,35 @@
         <head>
                 <meta charset="utf-8">
                 <title>CKEditor</title>
+                <script src="../../node_modules/@ckeditor/ckeditor5-inspector/build/inspector.js"></script>
                 <script src="../../build/ckeditor.js"></script>
+                <style>
+                    .placeholder {
+                        background-color: yellow;
+                        border: 1px solid darkgrey;
+                    }
+                </style>
         </head>
         <body>
-                <div id="editor">This is some sample content.</div>
+                <div id="editor">
+                    <p>
+                        This is some sample content.
+                        <span class="placeholder">{{placeholder}}</span>
+                    </p>
+                </div>
                 <script>
+                        // debug variable to dump the ckEditor output
+                        var ckEditor;
+
                         ClassicEditor
-                                .create( document.querySelector( '#editor' ) )
+                                .create( document.querySelector( '#editor' ), {
+                                      placeholderConfig: {
+                                        types: ['placeholder_1', 'placeholder_2', 'placeholder_3', 'placeholder_4']
+                                      },
+                                })
                                 .then( editor => {
+                                        CKEditorInspector.attach(editor);
+                                        ckEditor = editor
                                         console.log( editor );
                                 } )
                                 .catch( error => {
