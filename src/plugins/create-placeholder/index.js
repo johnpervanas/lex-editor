@@ -39,19 +39,19 @@ export default class CreatePlaceholder extends Plugin {
       // Callback executed once the placeholder button is clicked.
       view.on('execute', () => {
         const placeholderName = prompt('Placeholder name')
-        if (placeholderName.length) {
-          editor.model.change(writer => {
+        if (placeholderName && placeholderName.length) {
+          editor.model.change(async writer => {
+            try {
+              // Trigger the callback function
+              await createPlaceholderConfig.callback(placeholderName)
+            } catch (e) {
+              console.info('CKEditor/CreatePlaceholder: Something went wrong when calling the placeholder callback', e)
+            }
+
             // Create the placeholder element
             const placeholderElement = writer.createElement('placeholder', {
               name: placeholderName,
             })
-
-            try {
-              // Trigger the callback function
-              createPlaceholderConfig.callback(placeholderName)
-            } catch (e) {
-              console.info('CKEditor/CreatePlaceholder: Something went wrong when calling the placeholder callback', e)
-            }
 
             // Insert the placeholder in the current selection location.
             editor.model.insertContent(placeholderElement, editor.model.document.selection)
