@@ -29,7 +29,10 @@
                                         types: ['placeholder_1', 'placeholder_2', 'placeholder_3', 'placeholder_4']
                                       },
                                       createPlaceholderConfig: {
-                                        callback: placeholder => { console.log('add new placeholder callback: '  + placeholder)}
+                                        callback: placeholder => {
+                                            console.log('add new placeholder callback: '  + placeholder);
+                                            return 'OK'
+                                        }
                                       }
                                 })
                                 .then( editor => {

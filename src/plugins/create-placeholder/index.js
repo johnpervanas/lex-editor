@@ -1,5 +1,6 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin'
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview'
+import Notification from '@ckeditor/ckeditor5-ui/src/notification/notification'
 
 import imageIcon from '@ckeditor/ckeditor5-core/theme/icons/pencil.svg'
 
@@ -19,6 +20,8 @@ import imageIcon from '@ckeditor/ckeditor5-core/theme/icons/pencil.svg'
 export default class CreatePlaceholder extends Plugin {
   init() {
     const editor = this.editor
+    const t = editor.locale.t
+    const notification = editor.plugins.get(Notification)
 
     const createPlaceholderConfig = editor.config.get('createPlaceholderConfig')
     if (createPlaceholderConfig === undefined) {
@@ -41,20 +44,29 @@ export default class CreatePlaceholder extends Plugin {
         const placeholderName = prompt('Placeholder name')
         if (placeholderName && placeholderName.length) {
           editor.model.change(async writer => {
+            let callbackResult
             try {
               // Trigger the callback function
-              await createPlaceholderConfig.callback(placeholderName)
+              callbackResult = await createPlaceholderConfig.callback(placeholderName)
             } catch (e) {
               console.info('CKEditor/CreatePlaceholder: Something went wrong when calling the placeholder callback', e)
+              callbackResult = t('Something went wrong, please try again')
             }
 
-            // Create the placeholder element
-            const placeholderElement = writer.createElement('placeholder', {
-              name: placeholderName,
-            })
+            if (callbackResult === 'OK') {
+              // Create the placeholder element
+              const placeholderElement = writer.createElement('placeholder', {
+                name: placeholderName,
+              })
 
-            // Insert the placeholder in the current selection location.
-            editor.model.insertContent(placeholderElement, editor.model.document.selection)
+              // Insert the placeholder in the current selection location.
+              editor.model.insertContent(placeholderElement, editor.model.document.selection)
+            } else {
+              // throw the notification error
+              notification.showWarning(callbackResult, {
+                title: t('Placeholder creation failed'),
+              })
+            }
           })
         }
       })
