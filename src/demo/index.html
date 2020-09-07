@@ -31,7 +31,15 @@
                                       createPlaceholderConfig: {
                                         callback: placeholder => {
                                             console.log('add new placeholder callback: '  + placeholder);
-                                            return 'OK'
+                                            return {
+                                              status: 'success',
+                                              placeholder: 'test'
+                                            }
+
+                                            // error message example
+                                            // return {
+                                            //   status: 'error'
+                                            // }
                                         }
                                       }
                                 })
