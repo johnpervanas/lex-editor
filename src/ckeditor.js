@@ -64,9 +64,6 @@ ClassicEditor.defaultConfig = {
       'mediaEmbed',
       'undo',
       'redo',
-      '|',
-      'placeholder',
-      'createPlaceholder',
     ],
   },
   image: {
