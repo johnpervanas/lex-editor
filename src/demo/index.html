@@ -25,6 +25,9 @@
 
   ClassicEditor
     .create(document.querySelector('#editor'), {
+      fontSize: {
+        options: ['small', 'default'],
+      },
       toolbar: {
         items: [
           'heading',
@@ -34,7 +37,9 @@
           'link',
           'bulletedList',
           'numberedList',
+          'fontSize',
           '|',
+          'alignment',
           'indent',
           'outdent',
           '|',
