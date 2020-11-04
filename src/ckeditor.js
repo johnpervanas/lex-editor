@@ -21,6 +21,7 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar'
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation'
 import Placeholder from './plugins/placeholder'
 import CreatePlaceholder from './plugins/create-placeholder'
+import Snippet from './plugins/snippet'
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -49,7 +50,7 @@ ClassicEditor.builtinPlugins = [
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
-  extraPlugins: [Placeholder, CreatePlaceholder],
+  extraPlugins: [Placeholder, CreatePlaceholder, Snippet],
   fontSize: {
     options: ['small', 'default'],
   },

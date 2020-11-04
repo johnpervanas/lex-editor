@@ -51,10 +51,41 @@
           '|',
           'placeholder',
           'createPlaceholder',
+          'snippet',
         ],
       },
       placeholderConfig: {
         types: ['placeholder_1', 'placeholder_2', 'placeholder_3', 'placeholder_4']
+      },
+      snippetConfig: {
+        entries: [
+          {
+            name: "Arsenal",
+            items: [
+              {
+                name: "Organisation Address",
+                value: "<b>30 Erica Court</b>"
+              },
+              {
+                name: "Organisation Website",
+                value: "www.arsenal.com"
+              },
+            ]
+          },
+          {
+            name: "Manchester City",
+            items: [
+              {
+                name: "Organisation Address",
+                value: "The <b>organisation</b> <i>address</i>"
+              },
+              {
+                name: "Organisation Website",
+                value: "www.bbc.co.uk"
+              },
+            ]
+          }
+        ]
       },
       createPlaceholderConfig: {
         callback: placeholder => {
