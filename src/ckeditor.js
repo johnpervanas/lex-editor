@@ -11,6 +11,7 @@ import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage'
 import Font from '@ckeditor/ckeditor5-font/src/font'
 import Heading from '@ckeditor/ckeditor5-heading/src/heading'
 import Indent from '@ckeditor/ckeditor5-indent/src/indent'
+import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize'
 import Link from '@ckeditor/ckeditor5-link/src/link'
 import List from '@ckeditor/ckeditor5-list/src/list'
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed'
@@ -37,6 +38,7 @@ ClassicEditor.builtinPlugins = [
   Font,
   Alignment,
   Heading,
+  ImageResize,
   Indent,
   Link,
   List,
@@ -71,13 +73,17 @@ ClassicEditor.defaultConfig = {
       '|',
       'blockQuote',
       'insertTable',
+      'imageResize',
       'mediaEmbed',
       'undo',
       'redo',
+      '|',
+      'snippet',
     ],
   },
   image: {
     toolbar: ['imageStyle:full', 'imageStyle:side', '|', 'imageTextAlternative'],
+    resizeUnit: 'px',
   },
   table: {
     contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells'],
