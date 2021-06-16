@@ -23,6 +23,8 @@ import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformatio
 import Placeholder from './plugins/placeholder'
 import CreatePlaceholder from './plugins/create-placeholder'
 import Snippet from './plugins/snippet'
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline'
+import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough'
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -48,6 +50,8 @@ ClassicEditor.builtinPlugins = [
   Table,
   TableToolbar,
   TextTransformation,
+  Underline,
+  Strikethrough,
 ]
 
 // Editor configuration.
@@ -62,6 +66,8 @@ ClassicEditor.defaultConfig = {
       '|',
       'bold',
       'italic',
+      'underline',
+      'strikethrough',
       'link',
       'bulletedList',
       'numberedList',
