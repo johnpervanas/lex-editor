@@ -40,7 +40,7 @@
     "@ckeditor/ckeditor5-table": "^19.0.0",
     "@ckeditor/ckeditor5-theme-lark": "^19.0.0",
     "@ckeditor/ckeditor5-typing": "^19.0.0",
-    "@ckeditor/ckeditor5-font": "^19.0.0",
+    "@ckeditor/ckeditor5-font": "^27.0.0",
     "@ckeditor/ckeditor5-alignment": "^19.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^5.5.0",
