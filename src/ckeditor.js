@@ -14,6 +14,7 @@ import Indent from '@ckeditor/ckeditor5-indent/src/indent'
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize'
 import Link from '@ckeditor/ckeditor5-link/src/link'
 import List from '@ckeditor/ckeditor5-list/src/list'
+import ListStyle from '@ckeditor/ckeditor5-list/src/liststyle'
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed'
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph'
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice'
@@ -25,6 +26,9 @@ import CreatePlaceholder from './plugins/create-placeholder'
 import Snippet from './plugins/snippet'
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline'
 import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough'
+import CKFinderUploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter'
+import { Image, ImageUpload } from '@ckeditor/ckeditor5-image'
+import { CloudServices } from '@ckeditor/ckeditor5-cloud-services'
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -36,6 +40,10 @@ ClassicEditor.builtinPlugins = [
   Italic,
   BlockQuote,
   CKFinder,
+  CKFinderUploadAdapter,
+  ImageUpload,
+  Image,
+  CloudServices,
   EasyImage,
   Font,
   Alignment,
@@ -44,6 +52,7 @@ ClassicEditor.builtinPlugins = [
   Indent,
   Link,
   List,
+  ListStyle,
   MediaEmbed,
   Paragraph,
   PasteFromOffice,

@@ -120,7 +120,7 @@ class PlaceholderEditing extends Plugin {
         name: 'span',
         classes: ['placeholder'],
       },
-      model: (viewElement, modelWriter) => {
+      model: (viewElement, { writer: modelWriter }) => {
         const name = viewElement.getChild(0).data.slice(2, -2)
         return modelWriter.createElement('placeholder', { name })
       },
@@ -128,7 +128,7 @@ class PlaceholderEditing extends Plugin {
 
     conversion.for('editingDowncast').elementToElement({
       model: 'placeholder',
-      view: (modelItem, viewWriter) => {
+      view: (modelItem, { writer: viewWriter }) => {
         const widgetElement = createPlaceholderView(modelItem, viewWriter)
         return toWidget(widgetElement, viewWriter)
       },
@@ -136,7 +136,7 @@ class PlaceholderEditing extends Plugin {
 
     conversion.for('dataDowncast').elementToElement({
       model: 'placeholder',
-      view: createPlaceholderView,
+      view: (modelItem, { writer: viewWriter }) => createPlaceholderView(modelItem, viewWriter),
     })
 
     function createPlaceholderView(modelItem, viewWriter) {
