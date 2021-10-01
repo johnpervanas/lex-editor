@@ -10,4 +10,5 @@
 
 
 ## Local development
-Run `./scripts/local.sh -g ckeditor-link` command to test the latest build against the application
+Run `./scripts/local.sh -g ckeditor-link` command to test the latest build against the application.
+You can remove the link within the `./scripts/local.sh -g ckeditor-unlink` command
