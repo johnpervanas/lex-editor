@@ -29,6 +29,7 @@ import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough'
 import CKFinderUploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter'
 import { Image, ImageUpload } from '@ckeditor/ckeditor5-image'
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services'
+import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter'
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -61,6 +62,7 @@ ClassicEditor.builtinPlugins = [
   TextTransformation,
   Underline,
   Strikethrough,
+  SimpleUploadAdapter,
 ]
 
 // Editor configuration.
