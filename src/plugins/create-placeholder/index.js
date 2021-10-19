@@ -22,9 +22,6 @@ export default class CreatePlaceholder extends Plugin {
 
     const createPlaceholderConfig = editor.config.get('createPlaceholderConfig')
     if (createPlaceholderConfig === undefined) {
-      console.info(
-        'CKEditor/CreatePlaceholder: Missing callback function, please set the createPlaceholderConfig.callback attribute to enable the plugin.',
-      )
       return
     }
 
