@@ -89,6 +89,7 @@ ClassicEditor.defaultConfig = {
       'link',
       'bulletedList',
       'numberedList',
+      'fontFamily',
       'fontSize',
       '|',
       'alignment',
