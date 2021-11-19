@@ -13,8 +13,6 @@ import Heading from '@ckeditor/ckeditor5-heading/src/heading'
 import Indent from '@ckeditor/ckeditor5-indent/src/indent'
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize'
 import Link from '@ckeditor/ckeditor5-link/src/link'
-import List from '@ckeditor/ckeditor5-list/src/list'
-import ListStyle from '@ckeditor/ckeditor5-list/src/liststyle'
 import PageBreak from '@ckeditor/ckeditor5-page-break/src/pagebreak'
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed'
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph'
@@ -34,6 +32,9 @@ import CKFinderUploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uplo
 import { Image, ImageUpload } from '@ckeditor/ckeditor5-image'
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services'
 import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter'
+import { List, ListStyle } from './plugins/ckeditor5-list'
+// import List from './plugins/ckeditor5-list'
+// import ListStyle from './plugins/ckeditor5-list'
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
