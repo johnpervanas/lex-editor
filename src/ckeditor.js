@@ -32,9 +32,8 @@ import CKFinderUploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uplo
 import { Image, ImageUpload } from '@ckeditor/ckeditor5-image'
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services'
 import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter'
+import ContentModal from './plugins/content-modal'
 import { List, ListStyle } from './plugins/ckeditor5-list'
-// import List from './plugins/ckeditor5-list'
-// import ListStyle from './plugins/ckeditor5-list'
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -75,7 +74,7 @@ ClassicEditor.builtinPlugins = [
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
-  extraPlugins: [Placeholder, CreatePlaceholder, Snippet],
+  extraPlugins: [Placeholder, CreatePlaceholder, Snippet, ContentModal],
   fontSize: {
     options: ['small', 'default'],
   },

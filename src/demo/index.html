@@ -31,7 +31,6 @@
         ol.custom-list[style] li:before {
             content: '';
         }
-
     </style>
 </head>
 <body>
@@ -78,7 +77,29 @@
           'placeholder',
           'createPlaceholder',
           'snippet',
+          '|',
+          'contentModal'
         ],
+      },
+      contentModalConfig: {
+         openModalHandler: editor => {
+           console.log('test1')
+            var x = document.getElementById("modal");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+
+              editor.model.change(writer => {
+          const imageElement = writer.createElement('imageBlock', {
+            src: 'https://via.placeholder.com/350x150',
+          })
+
+          // Insert the image in the current selection location.
+          editor.model.insertContent(imageElement, editor.model.document.selection)
+        })
+         }
       },
       placeholderConfig: {
         types: ['placeholder_1', 'placeholder_2', 'placeholder_3', 'placeholder_4']
@@ -137,5 +158,10 @@
       console.error(error);
     });
 </script>
+
+<div id="modal" style="display: none;">
+    Modal content
+
+</div>
 </body>
 </html>
