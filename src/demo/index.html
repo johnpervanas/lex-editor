@@ -11,6 +11,17 @@
             border: 1px solid darkgrey;
         }
 
+        .signature-box {
+            background-color:#fefdba;
+            position: relative;
+            clear: both;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed hsl(0, 0%, 77%);
+        }
+
         ol.custom-list {
             counter-reset: item;
         }
@@ -78,30 +89,38 @@
           'createPlaceholder',
           'snippet',
           '|',
-          'contentModal'
+          'contentModal',
+          '|',
+          'signatureBox',
         ],
       },
       contentModalConfig: {
-         openModalHandler: editor => {
-            var x = document.getElementById("modal");
-              if (x.style.display === "none") {
-                x.style.display = "block";
-              } else {
-                x.style.display = "none";
-              }
+        openModalHandler: editor => {
+          var x = document.getElementById("modal");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
 
-              editor.model.change(writer => {
-          const imageElement = writer.createElement('imageBlock', {
-            src: 'https://via.placeholder.com/350x150',
+          editor.model.change(writer => {
+            const imageElement = writer.createElement('imageBlock', {
+              src: 'https://via.placeholder.com/350x150',
+            })
+
+            // Insert the image in the current selection location.
+            editor.model.insertContent(imageElement, editor.model.document.selection)
           })
-
-          // Insert the image in the current selection location.
-          editor.model.insertContent(imageElement, editor.model.document.selection)
-        })
-         }
+        }
       },
       placeholderConfig: {
         types: ['placeholder_1', 'placeholder_2', 'placeholder_3', 'placeholder_4']
+      },
+      signatureBoxConfig: {
+        messages: {
+          container: 'Signature document 123',
+          error: 'Document can contain one signature only',
+        }
       },
       snippetConfig: {
         entries: [
