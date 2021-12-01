@@ -26,7 +26,7 @@ export default class InsertSignatureBoxCommand extends Command {
 
 function createSignatureBox(writer, containerMessage) {
   const signatureBox = writer.createElement('signatureBox')
-  writer.insertText('{{ ' + containerMessage + ' }}', signatureBox, 'end')
+  writer.insertText(containerMessage, signatureBox, 'end')
 
   return signatureBox
 }
