@@ -11,14 +11,9 @@
             border: 1px solid darkgrey;
         }
 
-        .signature-box {
+        .signatureBox {
             background-color:#fefdba;
-            position: relative;
-            clear: both;
             padding: 5px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             border: 2px dashed hsl(0, 0%, 77%);
         }
 
@@ -117,9 +112,22 @@
         types: ['placeholder_1', 'placeholder_2', 'placeholder_3', 'placeholder_4']
       },
       signatureBoxConfig: {
+        signatories: [
+          {
+            id: '4324234',
+            name: 'Michal Woszczyna'
+          },
+          {
+            id: '43242345',
+            name: 'John Pervanas'
+          },
+          {
+            id: '43242346',
+            name: 'Andrew Jordan'
+          }
+        ],
         messages: {
-          container: 'Signature document 123',
-          error: 'Document can contain one signature only',
+          container: 'Signature required',
         }
       },
       snippetConfig: {

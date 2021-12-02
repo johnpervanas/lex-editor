@@ -1,32 +1,18 @@
 import Command from '@ckeditor/ckeditor5-core/src/command'
 
 export default class InsertSignatureBoxCommand extends Command {
-  execute() {
-    const messages = this.editor.config.get('signatureBoxConfig.messages')
-    let containerMessage = 'Document signature'
-    if (messages) {
-      if (messages.container) {
-        containerMessage = messages.container
-      }
-    }
+  execute({ signatoryName, signatoryId }) {
+    const editor = this.editor
 
-    this.editor.model.change(writer => {
-      this.editor.model.insertContent(createSignatureBox(writer, containerMessage))
+    editor.model.change(writer => {
+      const signature = writer.createElement('signatureBox', { name: 'signature', signatoryId, signatoryName })
+      editor.model.insertContent(signature)
+      writer.setSelection(signature, 'on')
     })
   }
 
   refresh() {
     const model = this.editor.model
-    const selection = model.document.selection
-    const allowedIn = model.schema.findAllowedParent(selection.getFirstPosition(), 'signatureBox')
-
-    this.isEnabled = allowedIn !== null
+    this.isEnabled = model.schema.checkChild(model.document.selection.focus.parent, 'signatureBox')
   }
-}
-
-function createSignatureBox(writer, containerMessage) {
-  const signatureBox = writer.createElement('signatureBox')
-  writer.insertText(containerMessage, signatureBox, 'end')
-
-  return signatureBox
 }
