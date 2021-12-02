@@ -8,13 +8,13 @@ export default class SignatureBoxUI extends Plugin {
   init() {
     const editor = this.editor
     const t = editor.t
-    const config = editor.config.get('signatureBoxConfig')
+    const signatories = editor.config.get('signatureBoxsignatories')
 
-    if (config.signatories && config.signatories.length) {
+    if (signatories && signatories.length) {
       editor.ui.componentFactory.add('signatureBox', locale => {
         const dropdownView = createDropdown(locale)
 
-        addListToDropdown(dropdownView, getDropdownItemsDefinitions(config.signatories))
+        addListToDropdown(dropdownView, getDropdownItemsDefinitions(signatories))
 
         dropdownView.buttonView.set({
           label: t('Signatory box'),
