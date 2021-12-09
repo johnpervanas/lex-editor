@@ -1,6 +1,6 @@
 {
   "name": "@lex-tech/lex-editor",
-  "version": "1.30.16",
+  "version": "1.30.17",
   "description": "",
   "main": "./build/ckeditor.js",
   "files": [

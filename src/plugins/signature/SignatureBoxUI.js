@@ -8,36 +8,41 @@ export default class SignatureBoxUI extends Plugin {
   init() {
     const editor = this.editor
     const t = editor.t
-    const signatories = editor.config.get('signatureBoxsignatories')
+    const config = editor.config.get('signatureBoxConfig')
 
-    if (signatories && signatories.length) {
-      editor.ui.componentFactory.add('signatureBox', locale => {
-        const dropdownView = createDropdown(locale)
+    console.log('config', config)
+    if (config && config.signatories) {
+      const signatories = config.signatories
 
-        addListToDropdown(dropdownView, getDropdownItemsDefinitions(signatories))
+      if (signatories && signatories.length) {
+        editor.ui.componentFactory.add('signatureBox', locale => {
+          const dropdownView = createDropdown(locale)
 
-        dropdownView.buttonView.set({
-          label: t('Signatory box'),
-          tooltip: true,
-          withText: true,
-        })
+          addListToDropdown(dropdownView, getDropdownItemsDefinitions(signatories))
 
-        // Disable the placeholder button when the command is disabled.
-        const command = editor.commands.get('signatureBox')
-        dropdownView.bind('isEnabled').to(command)
-
-        // Execute the command when the dropdown item is clicked (executed).
-        this.listenTo(dropdownView, 'execute', evt => {
-          editor.execute('signatureBox', {
-            value: 'signature',
-            signatoryId: evt.source.commandParam,
-            signatoryName: evt.source.label,
+          dropdownView.buttonView.set({
+            label: t('Signatory box'),
+            tooltip: true,
+            withText: true,
           })
-          editor.editing.view.focus()
-        })
 
-        return dropdownView
-      })
+          // Disable the placeholder button when the command is disabled.
+          const command = editor.commands.get('signatureBox')
+          dropdownView.bind('isEnabled').to(command)
+
+          // Execute the command when the dropdown item is clicked (executed).
+          this.listenTo(dropdownView, 'execute', evt => {
+            editor.execute('signatureBox', {
+              value: 'signature',
+              signatoryId: evt.source.commandParam,
+              signatoryName: evt.source.label,
+            })
+            editor.editing.view.focus()
+          })
+
+          return dropdownView
+        })
+      }
     }
   }
 }
