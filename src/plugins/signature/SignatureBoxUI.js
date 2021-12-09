@@ -10,7 +10,6 @@ export default class SignatureBoxUI extends Plugin {
     const t = editor.t
     const config = editor.config.get('signatureBoxConfig')
 
-    console.log('config', config)
     if (config && config.signatories) {
       const signatories = config.signatories
 
