@@ -6,7 +6,7 @@
     <script src="../../node_modules/@ckeditor/ckeditor5-inspector/build/inspector.js"></script>
     <script src="../../build/ckeditor.js"></script>
     <style>
-        .placeholder {
+        .placeholder, .placeholderBox {
             background-color: yellow;
             border: 1px solid darkgrey;
         }
@@ -87,6 +87,7 @@
           'contentModal',
           '|',
           'signatureBox',
+          'placeholderBox',
         ],
       },
       contentModalConfig: {
@@ -110,8 +111,38 @@
         }
       },
       placeholderConfig: {
-        types: ['placeholder_1', 'placeholder_2', 'placeholder_3', 'placeholder_4']
+        types: ['placeholder_1 asd', 'placeholder_2 dasd', 'placeholder_3 dasda', 'placeholder_4']
       },
+      placeholderBoxConfig: {
+        placeholders: [
+          {
+            id: '4324234',
+            name: 'placeholder_1',
+            label: 'Placeholder 123',
+            type: 'signature',
+          },
+          {
+            id: '4324234',
+            name: 'placeholder_sign_2',
+            label: 'Placeholder 123a',
+            type: 'signature',
+            optional: 'Michał Woszczyna',
+          },
+          {
+            id: '43242345',
+            name: 'placeholder_2',
+            label: 'Placeholder 2',
+            type: 'text',
+          },
+        ],
+        messages: {
+          types: {
+            text: 'Text',
+            signature: 'Signature',
+          }
+        }
+      },
+
       signatureBoxConfig: {
         signatories: [
           {

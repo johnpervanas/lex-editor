@@ -35,6 +35,7 @@ import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleu
 import ContentModal from './plugins/content-modal'
 import { List, ListStyle } from './plugins/ckeditor5-list'
 import SignatureBox from './plugins/signature'
+import PlaceholderBox from './plugins/placeholder-box'
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -75,7 +76,7 @@ ClassicEditor.builtinPlugins = [
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
-  extraPlugins: [Placeholder, CreatePlaceholder, Snippet, ContentModal, SignatureBox],
+  extraPlugins: [Placeholder, CreatePlaceholder, Snippet, ContentModal, SignatureBox, PlaceholderBox],
   fontSize: {
     options: ['small', 'default'],
   },
@@ -107,6 +108,7 @@ ClassicEditor.defaultConfig = {
       '|',
       'snippet',
       'signatureBox',
+      'placeholderBox',
     ],
   },
   image: {
