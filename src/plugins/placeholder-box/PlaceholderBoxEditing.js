@@ -104,7 +104,7 @@ export default class PlaceholderBoxEditing extends Plugin {
           ': ' +
           placeholderLabel +
           ' ' +
-          (placeholderOptional ? ' (' + placeholderOptional + ')' : ''),
+          (placeholderOptional && placeholderOptional.length ? ' (' + placeholderOptional + ')' : ''),
       )
       viewWriter.insert(viewWriter.createPositionAt(placeholderBoxView, 0), innerText)
 
