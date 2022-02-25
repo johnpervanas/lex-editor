@@ -94,7 +94,8 @@ export default class PlaceholderBoxEditing extends Plugin {
         'data-placeholderId': placeholderId,
         'data-placeholderLabel': placeholderLabel,
         'data-placeholderType': placeholderType,
-        'data-placeholderOptional': placeholderOptional,
+        ...(placeholderOptional &&
+          placeholderOptional !== 'undefined' && { 'data-placeholderOptional': placeholderOptional }),
         name,
       })
 
