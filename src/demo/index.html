@@ -6,15 +6,9 @@
     <script src="../../node_modules/@ckeditor/ckeditor5-inspector/build/inspector.js"></script>
     <script src="../../build/ckeditor.js"></script>
     <style>
-        .placeholder, .placeholderBox {
+        .placeholderBox {
             background-color: yellow;
             border: 1px solid darkgrey;
-        }
-
-        .signatureBox {
-            background-color:#fefdba;
-            padding: 5px 0;
-            border: 2px dashed hsl(0, 0%, 77%);
         }
 
         ol.custom-list {
@@ -43,7 +37,6 @@
 <div id="editor">
     <p>
         This is some sample content.
-        <span class="placeholder">{{placeholder}}</span>
     </p>
 </div>
 <script>
@@ -80,13 +73,10 @@
           'undo',
           'redo',
           '|',
-          'placeholder',
-          'createPlaceholder',
           'snippet',
           '|',
           'contentModal',
           '|',
-          'signatureBox',
           'placeholderBox',
         ],
       },
@@ -110,9 +100,7 @@
           })
         }
       },
-      placeholderConfig: {
-        types: ['placeholder_1 asd', 'placeholder_2 dasd', 'placeholder_3 dasda', 'placeholder_4']
-      },
+
       placeholderBoxConfig: {
         placeholders: [
           {
@@ -143,25 +131,6 @@
         }
       },
 
-      signatureBoxConfig: {
-        signatories: [
-          {
-            id: '4324234',
-            name: 'Michal Woszczyna'
-          },
-          {
-            id: '43242345',
-            name: 'John Pervanas'
-          },
-          {
-            id: '43242346',
-            name: 'Andrew Jordan'
-          }
-        ],
-        messages: {
-          container: 'Signature required',
-        }
-      },
       snippetConfig: {
         entries: [
           {
@@ -192,20 +161,7 @@
           }
         ]
       },
-      createPlaceholderConfig: {
-        callback: placeholder => {
-          console.log('add new placeholder callback: ' + placeholder);
-          return {
-            status: 'success',
-            placeholder: 'test'
-          }
 
-          // error message example
-          // return {
-          //   status: 'error'
-          // }
-        }
-      }
     })
     .then(editor => {
       CKEditorInspector.attach(editor);
@@ -219,7 +175,6 @@
 
 <div id="modal" style="display: none;">
     Modal content
-
 </div>
 </body>
 </html>

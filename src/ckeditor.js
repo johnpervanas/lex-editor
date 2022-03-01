@@ -23,8 +23,6 @@ import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties'
 import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties'
 
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation'
-import Placeholder from './plugins/placeholder'
-import CreatePlaceholder from './plugins/create-placeholder'
 import Snippet from './plugins/snippet'
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline'
 import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough'
@@ -34,7 +32,6 @@ import { CloudServices } from '@ckeditor/ckeditor5-cloud-services'
 import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter'
 import ContentModal from './plugins/content-modal'
 import { List, ListStyle } from './plugins/ckeditor5-list'
-import SignatureBox from './plugins/signature'
 import PlaceholderBox from './plugins/placeholder-box'
 
 export default class ClassicEditor extends ClassicEditorBase {}
@@ -76,7 +73,7 @@ ClassicEditor.builtinPlugins = [
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
-  extraPlugins: [Placeholder, CreatePlaceholder, Snippet, ContentModal, SignatureBox, PlaceholderBox],
+  extraPlugins: [Snippet, ContentModal, PlaceholderBox],
   fontSize: {
     options: ['small', 'default'],
   },
@@ -107,7 +104,6 @@ ClassicEditor.defaultConfig = {
       'redo',
       '|',
       'snippet',
-      'signatureBox',
       'placeholderBox',
     ],
   },
