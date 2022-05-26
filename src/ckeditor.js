@@ -33,6 +33,7 @@ import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleu
 import ContentModal from './plugins/content-modal'
 import { List, ListStyle } from './plugins/ckeditor5-list'
 import PlaceholderBox from './plugins/placeholder-box'
+import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight'
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -69,6 +70,7 @@ ClassicEditor.builtinPlugins = [
   Underline,
   Strikethrough,
   SimpleUploadAdapter,
+  Highlight,
 ]
 
 // Editor configuration.
@@ -85,6 +87,7 @@ ClassicEditor.defaultConfig = {
       'italic',
       'underline',
       'strikethrough',
+      'highlight',
       'link',
       'bulletedList',
       'numberedList',
