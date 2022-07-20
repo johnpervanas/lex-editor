@@ -31,9 +31,10 @@ import { Image, ImageUpload } from '@ckeditor/ckeditor5-image'
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services'
 import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter'
 import ContentModal from './plugins/content-modal'
-import { List, ListStyle } from './plugins/ckeditor5-list'
 import PlaceholderBox from './plugins/placeholder-box'
 import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight'
+import List from './plugins/ckeditor5-list/src/list'
+import ListProperties from './plugins/ckeditor5-list/src/listproperties'
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -57,7 +58,7 @@ ClassicEditor.builtinPlugins = [
   Indent,
   Link,
   List,
-  ListStyle,
+  ListProperties,
   MediaEmbed,
   PageBreak,
   Paragraph,
@@ -109,6 +110,13 @@ ClassicEditor.defaultConfig = {
       'snippet',
       'placeholderBox',
     ],
+  },
+  list: {
+    properties: {
+      styles: true,
+      startIndex: true,
+      reversed: true,
+    },
   },
   image: {
     toolbar: ['imageStyle:full', 'imageStyle:side', '|', 'imageTextAlternative'],
