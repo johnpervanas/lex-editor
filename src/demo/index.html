@@ -19,138 +19,145 @@
     </p>
 </div>
 <script>
-  // debug variable to dump the ckEditor output
-  var ckEditor;
+    // debug variable to dump the ckEditor output
+    var ckEditor;
 
-  ClassicEditor
-    .create(document.querySelector('#editor'), {
-      fontSize: {
-        options: ['small', 'default'],
-      },
-      toolbar: {
-        items: [
-          'heading',
-          '|',
-          'bold',
-          'italic',
-          'underline',
-          'strikethrough',
-          'link',
-          'bulletedList',
-          'numberedList',
-          'fontFamily',
-          'fontSize',
-          'highlight',
-          '|',
-          'alignment',
-          'indent',
-          'outdent',
-          'pageBreak',
-          '|',
-          'blockQuote',
-          'insertTable',
-          'mediaEmbed',
-          'undo',
-          'redo',
-          '|',
-          'snippet',
-          '|',
-          'contentModal',
-          '|',
-          'placeholderBox',
-        ],
-      },
-      contentModalConfig: {
-        ctaCopy: 'Insert content',
-        openModalHandler: editor => {
-          var x = document.getElementById("modal");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            list: {
+                properties: {
+                    styles: true,
+                    startIndex: true,
+                    reversed: true
+                }
+            },
+            fontSize: {
+                options: ['small', 'default'],
+            },
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'strikethrough',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    'fontFamily',
+                    'fontSize',
+                    'highlight',
+                    '|',
+                    'alignment',
+                    'indent',
+                    'outdent',
+                    'pageBreak',
+                    '|',
+                    'blockQuote',
+                    'insertTable',
+                    'mediaEmbed',
+                    'undo',
+                    'redo',
+                    '|',
+                    'snippet',
+                    '|',
+                    'contentModal',
+                    '|',
+                    'placeholderBox',
+                ],
+            },
+            contentModalConfig: {
+                ctaCopy: 'Insert content',
+                openModalHandler: editor => {
+                    var x = document.getElementById("modal");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
 
-          editor.model.change(writer => {
-            const imageElement = writer.createElement('imageBlock', {
-              src: 'https://via.placeholder.com/350x150',
-            })
+                    editor.model.change(writer => {
+                        const imageElement = writer.createElement('imageBlock', {
+                            src: 'https://via.placeholder.com/350x150',
+                        })
 
-            // Insert the image in the current selection location.
-            editor.model.insertContent(imageElement, editor.model.document.selection)
-          })
-        }
-      },
+                        // Insert the image in the current selection location.
+                        editor.model.insertContent(imageElement, editor.model.document.selection)
+                    })
+                }
+            },
 
-      placeholderBoxConfig: {
-        placeholders: [
-          {
-            id: '4324234',
-            name: 'placeholder_1',
-            label: 'Placeholder 123',
-            type: 'signature',
-          },
-          {
-            id: '4324234',
-            name: 'placeholder_sign_2',
-            label: 'Placeholder 123a',
-            type: 'signature',
-            optional: 'Michał Woszczyna',
-          },
-          {
-            id: '43242345',
-            name: 'placeholder_2',
-            label: 'Placeholder 2',
-            type: 'text',
-          },
-        ],
-        messages: {
-          types: {
-            text: 'Text',
-            signature: 'Signature',
-          }
-        }
-      },
+            placeholderBoxConfig: {
+                placeholders: [
+                    {
+                        id: '4324234',
+                        name: 'placeholder_1',
+                        label: 'Placeholder 123',
+                        type: 'signature',
+                    },
+                    {
+                        id: '4324234',
+                        name: 'placeholder_sign_2',
+                        label: 'Placeholder 123a',
+                        type: 'signature',
+                        optional: 'Michał Woszczyna',
+                    },
+                    {
+                        id: '43242345',
+                        name: 'placeholder_2',
+                        label: 'Placeholder 2',
+                        type: 'text',
+                    },
+                ],
+                messages: {
+                    types: {
+                        text: 'Text',
+                        signature: 'Signature',
+                    }
+                }
+            },
 
-      snippetConfig: {
-        entries: [
-          {
-            name: "Arsenal",
-            items: [
-              {
-                name: "Organisation Address",
-                value: "<b>30 Erica Court</b>"
-              },
-              {
-                name: "Organisation Website",
-                value: "www.arsenal.com"
-              },
-            ]
-          },
-          {
-            name: "Manchester City",
-            items: [
-              {
-                name: "Organisation Address",
-                value: "The <b>organisation</b> <i>address</i>"
-              },
-              {
-                name: "Organisation Website",
-                value: "www.bbc.co.uk"
-              },
-            ]
-          }
-        ]
-      },
+            snippetConfig: {
+                entries: [
+                    {
+                        name: "Arsenal",
+                        items: [
+                            {
+                                name: "Organisation Address",
+                                value: "<b>30 Erica Court</b>"
+                            },
+                            {
+                                name: "Organisation Website",
+                                value: "www.arsenal.com"
+                            },
+                        ]
+                    },
+                    {
+                        name: "Manchester City",
+                        items: [
+                            {
+                                name: "Organisation Address",
+                                value: "The <b>organisation</b> <i>address</i>"
+                            },
+                            {
+                                name: "Organisation Website",
+                                value: "www.bbc.co.uk"
+                            },
+                        ]
+                    }
+                ]
+            },
 
-    })
-    .then(editor => {
-      CKEditorInspector.attach(editor);
-      ckEditor = editor
-      console.log(editor);
-    })
-    .catch(error => {
-      console.error(error);
-    });
+        })
+        .then(editor => {
+            CKEditorInspector.attach(editor);
+            ckEditor = editor
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 </script>
 
 <div id="modal" style="display: none;">
