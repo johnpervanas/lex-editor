@@ -31,9 +31,10 @@ import { Image, ImageUpload } from '@ckeditor/ckeditor5-image'
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services'
 import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter'
 import ContentModal from './plugins/content-modal'
-import { List, ListStyle } from './plugins/ckeditor5-list'
 import PlaceholderBox from './plugins/placeholder-box'
 import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight'
+import { List } from '@ckeditor/ckeditor5-list'
+import ListStyle from "@ckeditor/ckeditor5-list/src/liststyle";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
